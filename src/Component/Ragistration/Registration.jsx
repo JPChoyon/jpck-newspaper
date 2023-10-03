@@ -1,8 +1,22 @@
 import { FaLink, FaUserTie } from "react-icons/fa";
-
 import Navbar from "../Navbar/Navbar";
+import { useContext } from "react";
+import { AuthContext } from "../../Context/Context";
 
 const Registration = () => {
+  const {emailSignUp} = useContext(AuthContext)
+
+  const handleRegister = (event) => {
+    event.preventDefault();
+    const name = event.target.name.value;
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+
+    emailSignUp(email, password)
+      .then((user) => console.log(user.user))
+      .catch((err) => console.log(err));
+
+  }
   return (
     <div>
       <Navbar></Navbar>
@@ -11,7 +25,7 @@ const Registration = () => {
           Register your account
         </div>
         <div className="mt-8">
-          <form action="#" autoComplete="off">
+          <form onSubmit={handleRegister} autoComplete="off">
             <div className="flex flex-col mb-2">
               <div className="flex relative ">
                 <span className="rounded-l-md inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
@@ -20,6 +34,7 @@ const Registration = () => {
                 <input
                   type="text"
                   id="name"
+                  name="name"
                   className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                   placeholder="Your name"
                 />
@@ -33,6 +48,7 @@ const Registration = () => {
                 <input
                   type="link"
                   id="url"
+                  name="link"
                   className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                   placeholder="Photo url"
                 />
@@ -53,6 +69,7 @@ const Registration = () => {
                   </svg>
                 </span>
                 <input
+                  name="email"
                   type="text"
                   id="sign-in-email"
                   className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
@@ -74,6 +91,7 @@ const Registration = () => {
                   </svg>
                 </span>
                 <input
+                  name="password"
                   type="password"
                   id="sign-in-email"
                   className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"

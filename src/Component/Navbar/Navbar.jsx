@@ -1,8 +1,17 @@
-
-import { Link, NavLink } from 'react-router-dom';
-import userLogo from '../../assets/user.png';
+import { Link, NavLink } from "react-router-dom";
+import userLogo from "../../assets/user.png";
+import { useContext } from "react";
+import { AuthContext } from "../../Context/Context";
+import { getAuth } from "firebase/auth";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    logOut()
+      .then()
+    .catch()
+  }
   const navItem = (
     <>
       <li>
@@ -54,9 +63,13 @@ const Navbar = () => {
             <img src={userLogo} />
           </div>
         </div>
-        <Link to="/login">
-          <button className="btn btn-sm  btn-ghost">Login</button>
-        </Link>
+        {user ? (
+          <button onClick={handleLogout}  className="btn btn-sm  btn-ghost">Log Out</button>
+        ) : (
+          <Link to="/login">
+            <button className="btn btn-sm  btn-ghost">Login</button>
+          </Link>
+        )}
       </div>
     </div>
   );
