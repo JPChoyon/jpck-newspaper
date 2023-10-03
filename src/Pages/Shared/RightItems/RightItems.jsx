@@ -1,7 +1,14 @@
-import { FaFacebook, FaGithub, FaGoogle, FaInstagram, FaTwitter } from "react-icons/fa";
-import qzone1 from '../../../assets/qZone1.png'
-import qzone2 from '../../../assets/qZone2.png'
-import qzone3 from '../../../assets/qZone3.png'
+import {
+  FaFacebook,
+  FaGithub,
+  FaGoogle,
+  FaInstagram,
+  FaTwitter,
+} from "react-icons/fa";
+import qzone1 from "../../../assets/qZone1.png";
+import qzone2 from "../../../assets/qZone2.png";
+import qzone3 from "../../../assets/qZone3.png";
+import adsPhoto from "../../../assets/bg1.png";
 
 const RightItems = () => {
   return (
@@ -42,17 +49,19 @@ const RightItems = () => {
         <h2 className="text-xl font-semibold">Q-Zone</h2>
         <div>
           <img src={qzone1} alt="" />
-          
         </div>
         <div>
           <img src={qzone2} alt="" />
-
         </div>
         <div>
           <img src={qzone3} alt="" />
-
         </div>
-
+      </div>
+      {/* ads section  */}
+      <div>
+        <div>
+          <img src={adsPhoto} alt="" />
+        </div>
       </div>
     </div>
   );
